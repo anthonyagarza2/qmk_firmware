@@ -103,6 +103,20 @@ void setrgb(uint8_t r, uint8_t g, uint8_t b, struct cRGB *led1) {
   (*led1).b = b;
 }
 
+void rgblight_capslock(int on) {
+
+	if (on == 1) {
+		rgblight_sethsv_noeeprom(189, 255, 255);
+		rgblight_timer_disable();
+	}	else {
+		rgblight_config.raw = eeconfig_read_rgblight();
+
+	  if (rgblight_config.enable) {
+	    rgblight_mode(rgblight_config.mode);
+			rgblight_sethsv_noeeprom(rgblight_config.hue, rgblight_config.sat, rgblight_config.val);
+	  }
+	}
+}
 
 uint32_t eeconfig_read_rgblight(void) {
   return eeprom_read_dword(EECONFIG_RGBLIGHT);

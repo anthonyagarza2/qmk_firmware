@@ -2,7 +2,7 @@ QUANTUM_DIR = quantum
 
 # # project specific files
 SRC += $(QUANTUM_DIR)/keymap_common.c \
-	$(QUANTUM_DIR)/led.c
+	#$(QUANTUM_DIR)/led.c
 
 # ifdef KEYMAP_FILE
 # ifneq (,$(shell grep USING_MIDI '$(KEYMAP_FILE)'))

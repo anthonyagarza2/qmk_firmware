@@ -26,8 +26,8 @@
     { k40, k41, k42, k43, KC_NO, KC_NO, k46, KC_NO, KC_NO, KC_NO, k4A, k4B, k4C, k4D, k4E, k4F} \
 }
 
-void * matrix_init_user(void);
-void * matrix_scan_user(void);
-void * action_key_pressed(keyrecord_t *record);
+void matrix_init_user(void);
+void matrix_scan_user(void);
+void process_action_user(keyrecord_t *record);
 
 #endif

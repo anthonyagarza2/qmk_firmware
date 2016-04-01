@@ -105,7 +105,6 @@ void setrgb(uint8_t r, uint8_t g, uint8_t b, struct cRGB *led1) {
 }
 
 void rgblight_capslock(int on) {
-
 	if (on == 1) {
 		rgblight_sethsv_noeeprom(189, 255, 255);
 		rgblight_timer_disable();
@@ -544,7 +543,6 @@ void rgblight_effect_localised(uint8_t leds[]) {
 	}
 
 	for (i=0; i< 8;i++) {
-		dprintf("LED: %u\r\n", leds[i]-1);
 		if (leds[i] > 0 && leds[i] < 100)
 			sethsv(rgblight_config.hue, rgblight_config.sat, rgblight_config.val, &led[leds[i]-1]);
 	}

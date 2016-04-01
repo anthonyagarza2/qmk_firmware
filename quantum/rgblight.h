@@ -2,7 +2,7 @@
 #define RGBLIGHT_H
 
 #ifndef RGBLIGHT_MODES
-#define RGBLIGHT_MODES 23
+#define RGBLIGHT_MODES 24
 #endif
 
 #ifndef RGBLIGHT_EFFECT_SNAKE_LENGTH
@@ -36,6 +36,7 @@
 #include <stdbool.h>
 #include "eeconfig.h"
 #include "light_ws2812.h"
+#include "keyboard.h"
 
 typedef union {
   uint32_t raw;
@@ -84,5 +85,8 @@ void rgblight_effect_rainbow_mood(uint8_t interval);
 void rgblight_effect_rainbow_swirl(uint8_t interval);
 void rgblight_effect_snake(uint8_t interval);
 void rgblight_effect_knight(uint8_t interval);
+void rgblight_effect_localized_fade(uint8_t interval);
+void rgblight_effect_localised(uint8_t leds[]);
+void rgblight_effect_wasd(void);
 
 #endif

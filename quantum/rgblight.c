@@ -35,6 +35,7 @@ rgblight_config_t rgblight_config;
 rgblight_config_t inmem_config;
 struct cRGB led[RGBLED_NUM];
 uint8_t rgblight_inited = 0;
+uint8_t caps_mode = 0;
 
 
 void sethsv(uint16_t hue, uint8_t sat, uint8_t val, struct cRGB *led1) {
@@ -108,7 +109,9 @@ void rgblight_capslock(int on) {
 	if (on == 1) {
 		rgblight_sethsv_noeeprom(189, 255, 255);
 		rgblight_timer_disable();
+		caps_mode = 1;
 	}	else {
+		caps_mode = 0;
 		rgblight_config.raw = eeconfig_read_rgblight();
 
 	  if (rgblight_config.enable) {
@@ -207,13 +210,15 @@ void rgblight_mode(uint8_t mode) {
   dprintf("rgblight mode: %u\n", rgblight_config.mode);
 	if (rgblight_config.mode == 1) {
 		rgblight_timer_disable();
-	} else if (rgblight_config.mode >=2 && rgblight_config.mode <=23) {
+	} else if (rgblight_config.mode >=2 && rgblight_config.mode <=24) {
 		// MODE 2-5, breathing
 		// MODE 6-8, rainbow mood
 		// MODE 9-14, rainbow swirl
 		// MODE 15-20, snake
 		// MODE 21-23, knight
 		rgblight_timer_enable();
+	} else if (rgblight_config.mode ==24) {
+		rgblight_timer_disable();
 	}
   rgblight_sethsv(rgblight_config.hue, rgblight_config.sat, rgblight_config.val);
 }
@@ -386,6 +391,8 @@ ISR(TIMER3_COMPA_vect) {
 		rgblight_effect_snake(rgblight_config.mode-15);
 	} else if (rgblight_config.mode>=21 && rgblight_config.mode<=23) {
 		rgblight_effect_knight(rgblight_config.mode-21);
+	} else if(rgblight_config.mode == 24) {
+
 	}
 }
 
@@ -422,6 +429,11 @@ void rgblight_effect_rainbow_swirl(uint8_t interval) {
 		hue = (360/RGBLED_NUM*i+current_hue)%360;
 		sethsv(hue, rgblight_config.sat, rgblight_config.val, &led[i]);
 	}
+/*
+	for (i=RGBLED_OUTER; i<RGBLED_NUM; i++) {
+		struct cRGB l = led[RGBLED_OUTER - 7 - (i - RGBLED_OUTER)];
+		setrgb(l.r, l.g, l.b, &led[i]);
+	*/
 	rgblight_set();
 
 	if (interval % 2) {
@@ -448,11 +460,13 @@ void rgblight_effect_snake(uint8_t interval) {
 		led[i].r=0;
 		led[i].g=0;
 		led[i].b=0;
-		for (j=0;j<RGBLIGHT_EFFECT_SNAKE_LENGTH;j++) {
-			k = pos+j*increament;
-			if (k<0) k = k+RGBLED_NUM;
-			if (i==k) {
-				sethsv(rgblight_config.hue, rgblight_config.sat, (uint8_t)(rgblight_config.val*(RGBLIGHT_EFFECT_SNAKE_LENGTH-j)/RGBLIGHT_EFFECT_SNAKE_LENGTH), &led[i]);
+		if (i < RGBLED_NUM) {
+			for (j=0;j<RGBLIGHT_EFFECT_SNAKE_LENGTH;j++) {
+				k = pos+j*increament;
+				if (k<0) k = k+RGBLED_NUM;
+				if (i==k) {
+					sethsv(rgblight_config.hue, rgblight_config.sat, (uint8_t)(rgblight_config.val*(RGBLIGHT_EFFECT_SNAKE_LENGTH-j)/RGBLIGHT_EFFECT_SNAKE_LENGTH), &led[i]);
+				}
 			}
 		}
 	}
@@ -516,4 +530,24 @@ void rgblight_effect_knight(uint8_t interval) {
 		}
 	}
 
+}
+
+void rgblight_effect_localised(uint8_t leds[]) {
+	if (rgblight_config.mode != 24 || caps_mode == 1)
+		return;
+
+	uint8_t i;
+	for (i=0;i<RGBLED_NUM;i++) {
+		led[i].r=0;
+		led[i].g=0;
+		led[i].b=0;
+	}
+
+	for (i=0; i< 8;i++) {
+		dprintf("LED: %u\r\n", leds[i]-1);
+		if (leds[i] > 0 && leds[i] < 100)
+			sethsv(rgblight_config.hue, rgblight_config.sat, rgblight_config.val, &led[leds[i]-1]);
+	}
+
+	rgblight_set();
 }

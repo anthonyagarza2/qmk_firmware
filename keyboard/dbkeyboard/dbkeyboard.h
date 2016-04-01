@@ -28,5 +28,6 @@
 
 void * matrix_init_user(void);
 void * matrix_scan_user(void);
+void * action_key_pressed(keyrecord_t *record);
 
 #endif

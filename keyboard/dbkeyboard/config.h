@@ -25,7 +25,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define PRODUCT_ID      0x6060
 #define DEVICE_VER      0x0001
 #define MANUFACTURER    David Boyes
-#define PRODUCT         dbkeyboard
+#define PRODUCT         DBKeyboard
 #define DESCRIPTION     DBKeyboard
 
 
@@ -37,8 +37,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 // Planck PCB default pin-out
 // Change this to how you wired your keyboard
 // COLS: Left to right, ROWS: Top to bottom
-#define COLS (int []){ F7, F6, F5, F4, F3, F2, F1, F0, E6, E7, B0, B1, B2, B3, B4, B5 }
-#define ROWS (int []){ C0, C1, C2, C3, C4 }
+#define COLS (int []){ B4, B5, B6, F0, C7, C6, D3, D2, D1, D0, B7, E6, B3, B2, B1, B0 }
+#define ROWS (int []){ F1, F4, F5, F6, F7 }
 
 /* COL2ROW or ROW2COL */
 #define DIODE_DIRECTION COL2ROW
@@ -62,10 +62,10 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     keyboard_report->mods == (MOD_BIT(KC_LSHIFT) | MOD_BIT(KC_RSHIFT)) \
 )
 
-#define ws2812_PORTREG  PORTC
-#define ws2812_DDRREG   DDRC
-#define ws2812_pin PC7
-#define RGBLED_NUM 46     // Number of LEDs
+#define ws2812_PORTREG  PORTD
+#define ws2812_DDRREG   DDRD
+#define ws2812_pin PD4
+#define RGBLED_NUM 95  // Number of LED
 #define RGBLIGHT_HUE_STEP 10
 #define RGBLIGHT_SAT_STEP 17
 #define RGBLIGHT_VAL_STEP 17

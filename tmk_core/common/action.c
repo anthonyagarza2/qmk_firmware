@@ -55,6 +55,7 @@ void action_exec(keyevent_t event)
 
 void process_action(keyrecord_t *record)
 {
+
     keyevent_t event = record->event;
 #ifndef NO_ACTION_TAPPING
     uint8_t tap_count = record->tap.count;
@@ -62,6 +63,7 @@ void process_action(keyrecord_t *record)
 
     if (IS_NOEVENT(event)) { return; }
 
+    action_key_pressed(record);
     action_t action = layer_switch_get_action(event.key);
     dprint("ACTION: "); debug_action(action);
 #ifndef NO_ACTION_LAYER

@@ -26,7 +26,15 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define DEVICE_VER      0x0001
 #define MANUFACTURER    wootpatoot
 #define PRODUCT         maxipad
-#define DESCRIPTION     A custom keyboard
+#define DESCRIPTION     A custom macropad keyboard
+
+/* rgb strip config */
+#define RGB_DI_PIN F4     // The pin your RGB strip is wired to
+#define RGBLIGHT_ANIMATIONS   // Require for fancier stuff (not compatible with audio)
+#define RGBLED_NUM 8      // Number of LEDs
+#define RGBLIGHT_HUE_STEP 10
+#define RGBLIGHT_SAT_STEP 17
+#define RGBLIGHT_VAL_STEP 17
 
 /* key matrix size */
 #define MATRIX_ROWS 5
@@ -43,13 +51,13 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
  *
 */
 //Pro micro pinout
-	#define MATRIX_ROW_PINS { B6, B2, B3, B1, F7 }
-	#define MATRIX_COL_PINS { F4, C6, D7, F5, B4, B5 }
-	#define UNUSED_PINS
-//Teensy 2 pinout
- 	//#define MATRIX_ROW_PINS { B6, F7, B2, B3, B1 }
-	//#define MATRIX_COL_PINS { F6, C6, D7, F5, B4, B5 }
+	//#define MATRIX_ROW_PINS { B6, B2, B3, B1, F7 }
+	//#define MATRIX_COL_PINS { F4, C6, D7, F5, B4, B5 }
 	//#define UNUSED_PINS
+//Teensy 2 pinout
+ 	#define MATRIX_ROW_PINS { B6, F7, B2, B3, B1 }
+	#define MATRIX_COL_PINS { F6, C6, D7, F5, B4, B5 }
+	#define UNUSED_PINS
 
 
 /* COL2ROW or ROW2COL */

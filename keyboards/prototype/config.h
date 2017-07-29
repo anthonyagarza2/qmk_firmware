@@ -26,6 +26,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define MANUFACTURER    Anthony Garza
 #define PRODUCT         The Planck + Accessory Keyboard
 #define DESCRIPTION     Firmware for a modified planck that works with an accessory board.
+#define DEVICE_VER 0x0001
 
 /* key matrix size */
 #define MATRIX_ROWS 8
@@ -64,12 +65,11 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 //#define NO_ACTION_ONESHOT
 //#define NO_ACTION_MACRO
 //#define NO_ACTION_FUNCTION
-
-#ifdef SUBPROJECT_rev3
-    #include "rev3/config.h"
+#ifdef SUBPROJECT_lets_split
+	#include "lets_split/config.h"
 #endif
-#ifdef SUBPROJECT_rev4
-    #include "rev4/config.h"
+#ifdef SUBPROJECT_planck
+	#include "planck/config.h"
 #endif
 
 #endif

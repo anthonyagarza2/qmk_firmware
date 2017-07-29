@@ -1,4 +1,4 @@
-SUBPROJECT_DEFAULT = rev4
+SUBPROJECT_DEFAULT = planck
 
 ifndef MAKEFILE_INCLUDED
 	include ../../Makefile

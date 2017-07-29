@@ -1,16 +1,17 @@
-Planck
-===
+Prototype Planck + Accessory Firmware
+=====================================
 
-![Planck](http://i.imgur.com/q2M3uEU.jpg)
+[PROTOYPE IMAGE SOON]
 
-A compact 40% (12x4) ortholinear keyboard kit made and sold by OLKB and Massdrop. [More info on qmk.fm](http://qmk.fm/planck/)
+Current Hardware Supported: Planck PCB rev4 + (1/2 Let's Split | The Sidearm)
 
-Keyboard Maintainer: [Jack Humbert](https://github.com/jackhumbert)
-Hardware Supported: Planck PCB rev1, rev2, rev3, rev4, Teensy 2.0
-Hardware Availability: [OLKB.com](https://olkb.com), [Massdrop](https://www.massdrop.com/buy/planck-mechanical-keyboard?mode=guest_open)
+Some hardware modifications are required. Mainly, soldering a TRS or TRRS socket to the planck rev 4 PCB.
+This firmware uses the Serial protocol available in QMK for communication between halves.  
+The default planck config assumes you are using pin D1 for the data connection between components. 
+You must change the pin in planck/config.h if you use a different one. 
 
 Make example for this keyboard (after setting up your build environment):
 
-    make planck-rev4-default
+    make prototype-<target device>-<keymap>
 
 See [build environment setup](https://docs.qmk.fm/build_environment_setup.html) then the [make instructions](https://docs.qmk.fm/make_instructions.html) for more information.

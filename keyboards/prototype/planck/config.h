@@ -1,7 +1,7 @@
-#ifndef CONFIG_USER_H
-#define CONFIG_USER_H
+#ifndef CONFIG_PLANCK_H
+#define CONFIG_PLANCK_H
 
-#include "../../config.h"
+#include "../config.h"
 
 // /* Planck PCB default pin-out */
 #define MATRIX_ROW_PINS { D0, D5, B5, B6 }
@@ -21,8 +21,6 @@
 #define RGBLIGHT_HUE_STEP 10
 #define RGBLIGHT_SAT_STEP 17
 #define RGBLIGHT_VAL_STEP 17
-
-#define USB_MAX_POWER_CONSUMPTION 100
 
 #define SERIAL_PIN_DDR DDRD
 #define SERIAL_PIN_PORT PORTD

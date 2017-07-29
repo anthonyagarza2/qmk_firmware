@@ -1,5 +1,5 @@
-#ifndef REV4_H
-#define REV4_H
+#ifndef PLANCK_H
+#define PLANCK_H
 
 #include "../prototype.h"
 

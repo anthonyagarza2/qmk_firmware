@@ -2,6 +2,6 @@ BACKLIGHT_ENABLE = yes
 RGBLIGHT_ENABLE = yes
 AUDIO_ENABLE = no
 
-ifndef QUANTUM_DIR
-	include ../../../../Makefile
+ifndef MAKEFILE_INCLUDED
+	include ../../../Makefile
 endif

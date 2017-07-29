@@ -1,7 +1,7 @@
-#ifndef CONFIG_USER_H
-#define CONFIG_USER_H
+#ifndef CONFIG_LETS_SPLIT_H
+#define CONFIG_LETS_SPLIT_H
 
-#include "../../config.h"
+#include "../config.h"
 
 /* Lets split v1 pin out */
 #define MATRIX_ROW_PINS { B5, B4, E6, D7 }
@@ -19,8 +19,6 @@
 #define RGBLIGHT_HUE_STEP 10
 #define RGBLIGHT_SAT_STEP 17
 #define RGBLIGHT_VAL_STEP 17
-
-#define USB_MAX_POWER_CONSUMPTION 100
 
 #define SERIAL_PIN_DDR DDRD
 #define SERIAL_PIN_PORT PORTD

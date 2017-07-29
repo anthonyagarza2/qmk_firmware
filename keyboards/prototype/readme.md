@@ -1,7 +1,7 @@
 Prototype Planck + Accessory Firmware
 =====================================
 
-[PROTOYPE IMAGE SOON]
+![Prototype](http://i.imgur.com/aH5vaPM.jpg)
 
 Current Hardware Supported: Planck PCB rev4 + (1/2 Let's Split | The Sidearm)
 

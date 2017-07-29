@@ -1,3 +1,3 @@
-# The Planck + 1/2 Lets Split Layout
+# The Planck + Sidearm Layout
 
-Default keymap is for a Planck and 1/2 of a Let's Split keyboard. 
+Default keymap is for a Planck and Sidearm keyboard. 

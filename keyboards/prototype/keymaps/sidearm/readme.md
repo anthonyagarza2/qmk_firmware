@@ -1,2 +1,2 @@
-# The Planck + Accessory Layout
+# The Planck + Sidearm Layout
 

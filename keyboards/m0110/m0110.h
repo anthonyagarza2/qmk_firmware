@@ -16,6 +16,13 @@
 #ifndef M0110_H
 #define M0110_H
 
+#ifdef SUBPROJECT_teensy
+  #include "teensy.h"
+#endif
+#ifdef SUBPROJECT_feather
+  #include "feather.h"
+#endif
+
 #include "quantum.h"
 
 // This a shortcut to help you visually see your layout.
